@@ -28,8 +28,9 @@ target_link_libraries(gtest_tests ${GTEST_LIBRARIES} pthread)
 add_subdirectory(lib/Catch2)
 add_executable(catch2_tests 
   ${SRC}
+  ${CMAKE_SOURCE_DIR}/tests/catch2_main.cc
   ${CMAKE_SOURCE_DIR}/tests/catch2_tests.cc
 )
-#target_link_libraries(catch2_tests PRIVATE Catch2::Catch2)
-target_link_libraries(catch2_tests PRIVATE Catch2::Catch2WithMain)
+target_link_libraries(catch2_tests PRIVATE Catch2::Catch2)
+#target_link_libraries(catch2_tests PRIVATE Catch2::Catch2WithMain)
 
