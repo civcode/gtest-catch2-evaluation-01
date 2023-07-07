@@ -10,17 +10,26 @@ set(CMAKE_BUILD_TYPE debug)
 
 find_package(GTest REQUIRED)
 
+
 include_directories(
   ${GTEST_INCLUDE_DIRS}
-  ${PROJECT_SOURCE_DIR}/include
+  ${CMAKE_SOURCE_DIR}/include
 )
 
 set(SRC
-  ${PROJECT_SOURCE_DIR}/src/my_class.cc
+  ${CMAKE_SOURCE_DIR}/src/my_class.cc
 )
 
 add_executable(my_class src/main.cc ${SRC})
-add_executable(tests tests/tests.cc ${SRC})
-target_link_libraries(tests ${GTEST_LIBRARIES} pthread)
+add_executable(gtest_tests tests/gtest_tests.cc ${SRC})
+target_link_libraries(gtest_tests ${GTEST_LIBRARIES} pthread)
 
+
+add_subdirectory(lib/Catch2)
+add_executable(catch2_tests 
+  ${SRC}
+  ${CMAKE_SOURCE_DIR}/tests/catch2_tests.cc
+)
+#target_link_libraries(catch2_tests PRIVATE Catch2::Catch2)
+target_link_libraries(catch2_tests PRIVATE Catch2::Catch2WithMain)
 
