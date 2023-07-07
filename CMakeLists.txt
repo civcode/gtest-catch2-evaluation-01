@@ -21,7 +21,11 @@ set(SRC
 )
 
 add_executable(my_class src/main.cc ${SRC})
-add_executable(gtest_tests tests/gtest_tests.cc ${SRC})
+add_executable(gtest_tests tests/gtest_tests.cc 
+  ${SRC}
+  ${CMAKE_SOURCE_DIR}/tests/gtest_main.cc
+  ${CMAKE_SOURCE_DIR}/tests/gtest_tests.cc
+)
 target_link_libraries(gtest_tests ${GTEST_LIBRARIES} pthread)
 
 

@@ -6,7 +6,8 @@
 
 //MyClass* my_class;
 
-std::shared_ptr<MyClass> my_class_ptr;
+//std::shared_ptr<MyClass> my_class_ptr;
+std::shared_ptr<MyClass> my_class_ptr = std::shared_ptr<MyClass>(new MyClass());
 
 // Tests factorial of 0.
 TEST(FactorialTest, HandlesZeroInput) {
@@ -21,10 +22,10 @@ TEST(FactorialTest, HandlesPositiveInput) {
   EXPECT_EQ(my_class_ptr->FactorialRecursive(8), 40320);
 }
 
-int main(int argc, char **argv) {
-  testing::InitGoogleTest(&argc, argv);
+// int main(int argc, char **argv) {
+//   testing::InitGoogleTest(&argc, argv);
 
-  my_class_ptr = std::shared_ptr<MyClass>(new MyClass());
+//   my_class_ptr = std::shared_ptr<MyClass>(new MyClass());
 
-  return RUN_ALL_TESTS();
-}
+//   return RUN_ALL_TESTS();
+// }
